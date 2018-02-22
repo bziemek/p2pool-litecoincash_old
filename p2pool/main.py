@@ -65,7 +65,7 @@ class keypool():
     def paytotal(self):
         self.payouttotal = 0.0
         for i in range(len(pubkeys.keys)):
-            self.payouttotal += node.get_current_txouts().get(bitcoin_data.pubkey_hash_to_script2(pubkeys.keys[i]), 0)*1e-8
+            self.payouttotal += node.get_current_txouts().get(bitcoin_data.pubkey_hash_to_script2(pubkeys.keys[i]), 0)*1e-7
         return self.payouttotal
 
     def getpaytotal(self):
@@ -403,8 +403,8 @@ def main(args, net, datadir_path, merged_urls, worker_endpoint):
                         paytot = 0.0
                         for i in range(len(pubkeys.keys)):
                             curtot = node.get_current_txouts().get(bitcoin_data.pubkey_hash_to_script2(pubkeys.keys[i]), 0)
-                            paytot += curtot*1e-8
-                            paystr += "(%.4f)" % (curtot*1e-8,)
+                            paytot += curtot*1e-7
+                            paystr += "(%.4f)" % (curtot*1e-7,)
                         paystr += "=%.4f" % (paytot,)
                         this_str += '\n Shares: %i (%i orphan, %i dead) Stale rate: %s Efficiency: %s Current payout: %s %s' % (
                             shares, stale_orphan_shares, stale_doa_shares,
@@ -448,8 +448,8 @@ def run():
     parser = fixargparse.FixedArgumentParser(description='p2pool (version %s)' % (p2pool.__version__,), fromfile_prefix_chars='@')
     parser.add_argument('--version', action='version', version=p2pool.__version__)
     parser.add_argument('--net',
-        help='use specified network (default: bitcoin)',
-        action='store', choices=sorted(realnets), default='bitcoin', dest='net_name')
+        help='use specified network (default: litecoincash)',
+        action='store', choices=sorted(realnets), default='litecoincash', dest='net_name')
     parser.add_argument('--testnet',
         help='''use the network's testnet''',
         action='store_const', const=True, default=False, dest='testnet')
