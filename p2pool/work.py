@@ -372,7 +372,7 @@ class WorkerBridge(worker_interface.WorkerBridge):
         else:
             current_time = time.time()
             if (current_time - print_throttle) > 5.0:
-                print 'New work for %s! Diff: %.02f Share diff: %.02f Block value: %.2f %s (%i tx, %.0f kB)' % (
+                print 'New work for %s! Diff: %.02f Share diff: %.02f (speed %.06f) Block value: %.2f %s (%i tx, %.0f kB)' % (
                     bitcoin_data.pubkey_hash_to_address(pubkey_hash, self.node.net.PARENT),
                     bitcoin_data.target_to_difficulty(target),
                     bitcoin_data.target_to_difficulty(share_info['bits'].target),
