@@ -371,6 +371,7 @@ class WorkerBridge(worker_interface.WorkerBridge):
             print_throttle = time.time()
         else:
             current_time = time.time()
+            local_addr_rates = self.get_local_addr_rates()
             if (current_time - print_throttle) > 5.0:
                 print 'New work for %s! Diff: %.02f Share diff: %.02f (speed %.06f) Block value: %.2f %s (%i tx, %.0f kB)' % (
                     bitcoin_data.pubkey_hash_to_address(pubkey_hash, self.node.net.PARENT),
