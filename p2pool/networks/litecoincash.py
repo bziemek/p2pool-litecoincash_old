@@ -9,7 +9,7 @@ SHARE_PERIOD = 20 # seconds
 CHAIN_LENGTH = 24*60*60//10 # shares
 REAL_CHAIN_LENGTH = 24*60*60//10 # shares
 TARGET_LOOKBEHIND = 150 # shares
-SPREAD = 12 # blocks
+SPREAD = 7 # blocks
 MIN_TARGET = 0
 MAX_TARGET = 2**256//2**20 - 1
 
